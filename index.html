@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Movies</title>
+<meta name="description" content="Every movie we have watched together.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233A2590'/%3E%3Cpath d='M9 8h14v4a2 2 0 0 0 0 4v0a2 2 0 0 0 0 4v4H9v-4a2 2 0 0 0 0-4v0a2 2 0 0 0 0-4z' fill='%23E23D5A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=Noto+Sans+Thai:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Our Movies, back to top">Our Movies</a>
+  <div class="top-actions">
+    <button class="btn primary" id="addBtn" type="button">Add movie</button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Dashboard -->
+  <section class="ticket" aria-label="Dashboard">
+    <div class="ticket-main">
+      <p class="ticket-label">Movies watched together</p>
+      <p class="big" id="statTotal" aria-live="polite">0</p>
+      <p class="ticket-sub" id="statSince"></p>
+    </div>
+    <div class="ticket-stub">
+      <p class="ticket-label" id="yearLabel">Watched this year</p>
+      <p class="big" id="statYear">0</p>
+    </div>
+  </section>
+
+  <figure class="chart wide">
+    <figcaption id="monthTitle">Movies per month</figcaption>
+    <div class="months" id="months" role="img" aria-label="Movies watched per month this year"></div>
+  </figure>
+
+  <section class="charts" aria-label="Favourites">
+    <figure class="chart">
+      <figcaption>Top 5 places to watch</figcaption>
+      <ol class="bars" id="chartPlaces"></ol>
+    </figure>
+    <figure class="chart">
+      <figcaption>Top 5 genres</figcaption>
+      <ol class="bars" id="chartGenres"></ol>
+    </figure>
+  </section>
+
+  <!-- Controls -->
+  <section class="controls" aria-label="Find a movie">
+    <div class="field grow">
+      <label for="q">Search</label>
+      <input id="q" type="search" placeholder="Title, actor, director, cinema" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="genreSel">Genre</label>
+      <select id="genreSel"></select>
+    </div>
+    <div class="chips" id="yearChips" role="group" aria-label="Year watched"></div>
+  </section>
+  <p class="count" id="resultCount" aria-live="polite"></p>
+
+  <!-- Movie cards -->
+  <div id="grid" aria-label="Movies"></div>
+  <div class="empty" id="empty" hidden>
+    <p class="empty-title">No movies match.</p>
+    <p>Clear the search or filters, or add a movie you have just watched.</p>
+  </div>
+</main>
+
+<footer class="foot">
+  <p>Made for two. Add movie saves to your OurMovies folder in Chrome or Edge. Push the folder to GitHub to publish.</p>
+  <button class="btn ghost" id="exportXlsx" type="button">Export to Excel</button>
+</footer>
+
+<!-- Add / edit movie -->
+<dialog id="movieDlg" aria-labelledby="dlgTitle">
+  <form id="movieForm" method="dialog" novalidate>
+    <h2 id="dlgTitle">Add movie</h2>
+    <div class="form-layout">
+      <div class="poster-col">
+        <label class="poster-drop" for="fPosterFile">
+          <span class="poster-hint" id="posterHint">Choose poster</span>
+          <img id="posterPreview" alt="Chosen poster" hidden>
+        </label>
+        <input id="fPosterFile" class="sr-file" type="file" accept="image/*">
+        <span class="poster-change" id="posterChange" aria-hidden="true">Click the poster to change it</span>
+      </div>
+
+      <div class="form-fields">
+        <fieldset>
+          <legend>Movie night</legend>
+          <div class="field">
+            <label for="fTitle">Title</label>
+            <input id="fTitle" required autocomplete="off">
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="fWatched">Date watched</label>
+              <input id="fWatched" type="date" required>
+            </div>
+            <div class="field">
+              <label for="fLocation">Where we watched</label>
+              <input id="fLocation" list="locList" autocomplete="off">
+              <datalist id="locList"></datalist>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>About the movie</legend>
+          <div class="row3">
+            <div class="field">
+              <label for="fYear">Release year</label>
+              <input id="fYear" type="number" min="1888" max="2100" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="fRuntime">Runtime (min)</label>
+              <input id="fRuntime" type="number" min="1" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="fLanguage">Language</label>
+              <input id="fLanguage" list="langList" autocomplete="off">
+              <datalist id="langList"></datalist>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fGenres">Genres <span class="opt">separate with commas</span></label>
+            <input id="fGenres" placeholder="Action, Comedy, Romance" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="fDirector">Director</label>
+            <input id="fDirector" autocomplete="off">
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="form-wide">
+        <div class="field">
+          <label for="fCast">Cast <span class="opt">separate with commas</span></label>
+          <textarea id="fCast" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="fStudios">Production companies</label>
+          <input id="fStudios" autocomplete="off">
+        </div>
+      </div>
+    </div>
+    <p class="sync-note" id="syncNote"></p>
+    <p class="form-error" id="formError" role="alert" hidden></p>
+    <div class="dlg-actions">
+      <button class="btn ghost" type="button" id="cancelBtn">Cancel</button>
+      <button class="btn primary" type="submit" id="saveBtn">Save movie</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- Movie details -->
+<dialog id="detailDlg" class="detail" aria-labelledby="dTitle">
+  <button class="close" type="button" id="dClose" aria-label="Close details">Close</button>
+  <div class="detail-grid">
+    <div class="detail-poster" id="dPoster"></div>
+    <div class="detail-info">
+      <h2 id="dTitle"></h2>
+      <p class="card-alt" id="dAlt"></p>
+      <p class="meta" id="dMeta"></p>
+      <div id="dRating"></div>
+      <ul class="tags" id="dTags"></ul>
+      <dl class="credits" id="dCredits"></dl>
+      <p class="note" id="dNote" hidden></p>
+      <div class="detail-stub" id="dStub"></div>
+      <div class="dlg-actions">
+        <button class="btn ghost" type="button" id="dDelete">Delete</button>
+        <button class="btn primary" type="button" id="dEdit">Edit movie</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- Delete confirm -->
+<dialog id="delDlg" class="small" aria-labelledby="delTitle">
+  <form method="dialog">
+    <h2 id="delTitle">Delete this movie?</h2>
+    <p id="delText"></p>
+    <div class="dlg-actions">
+      <button class="btn ghost" value="cancel">Keep it</button>
+      <button class="btn danger" value="delete" id="delConfirm">Delete movie</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="movies-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
