@@ -137,12 +137,26 @@
   }
 
   // Saves the change to the browser and, when a folder is connected, to the folder too.
-  async function persist(h, doneText) {
+  // Deletes a poster file from movie_poster/, unless another movie still uses it.
+  async function removePoster(h, path) {
+    if (!path || !path.startsWith('movie_poster/')) return 'none';
+    if (state.movies.some((m) => m.poster === path)) return 'shared';
+    try {
+      const dir = await h.getDirectoryHandle('movie_poster');
+      await dir.removeEntry(path.slice('movie_poster/'.length));
+      return 'deleted';
+    } catch (e) {
+      return 'failed';
+    }
+  }
+
+  async function persist(h, doneText, after) {
     if (h) {
       try {
         await syncToFolder(h);
         save();
-        toast(`${doneText}. Folder updated.`);
+        const extra = after ? await after() : '';
+        toast(`${doneText}. Folder updated${extra}.`);
         return;
       } catch (e) {
         save();
@@ -312,7 +326,10 @@
     $('detailDlg').close();
     if (!m) return;
     state.deletingId = m.id;
-    $('delText').textContent = `${m.title}, watched ${fmtDate(m.watched)}, will be removed from this browser.`;
+    const fileNote = canSync && m.poster && m.poster.startsWith('movie_poster/')
+      ? ' Its poster file is also deleted from your movie_poster folder.'
+      : '';
+    $('delText').textContent = `${m.title}, watched ${fmtDate(m.watched)}, will be removed from the site.${fileNote} This can't be undone.`;
     $('delDlg').showModal();
   });
 
@@ -496,10 +513,14 @@
     $('delDlg').returnValue = '';
     if (!confirmed) return;
     const h = await connectFolder();
+    const gone = state.movies.find((m) => m.id === id);
     state.movies = state.movies.filter((m) => m.id !== id);
     if (!state.deleted.includes(id)) state.deleted.push(id);
     renderAll();
-    await persist(h, 'Movie deleted');
+    await persist(h, 'Movie deleted', async () => {
+      const result = await removePoster(h, gone && gone.poster);
+      return { deleted: ' and poster file deleted', shared: ' (poster kept, another movie uses it)', failed: ' (poster file could not be deleted)', none: '' }[result];
+    });
   });
 
   /* ---------- filters events ---------- */

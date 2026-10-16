@@ -2668,6 +2668,6 @@ window.MOVIES_SEED = [
    "Michael Stuhlbarg"
   ],
   "location": "Eastville Cineplex",
-  "poster": "movie_poster/digger.jpg"
+  "poster": "movie_poster/Digger.jpg"
  }
 ];
