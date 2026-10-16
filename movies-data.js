@@ -1,4 +1,4 @@
-// Our Movies data. Edit by hand, or use "Export" in the site to regenerate this file.
+// Our Movies data. The site updates this file when you add, edit or delete a movie.
 window.MOVIES_SEED = [
  {
   "title": "Civil War",
@@ -910,7 +910,6 @@ window.MOVIES_SEED = [
   "runtime": 85,
   "studios": "Dream Well Studio, Take Five, Sacrebleu Productions",
   "director": "Gints Zilbalodis",
-  "cast": [],
   "location": "Nice's condo",
   "poster": "movie_poster/Flow.jpg"
  },
@@ -2647,5 +2646,28 @@ window.MOVIES_SEED = [
   ],
   "location": "Eastville Cineplex",
   "poster": "movie_poster/New_castle_of_the_Undersea_Devil.jpg"
+ },
+ {
+  "title": "Digger",
+  "year": 2026,
+  "watched": "2026-10-16",
+  "language": "English",
+  "genres": [
+   "Dark Comedy",
+   "Satire",
+   "Drama"
+  ],
+  "runtime": 129,
+  "studios": "Warner Bros. Pictures, Legendary Pictures",
+  "director": "Alejandro González Iñárritu",
+  "cast": [
+   "Tom Cruise",
+   "Riz Ahmed",
+   "John Goodman",
+   "Sandra Hüller",
+   "Michael Stuhlbarg"
+  ],
+  "location": "Eastville Cineplex",
+  "poster": "movie_poster/digger.jpg"
  }
 ];
