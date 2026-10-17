@@ -2669,5 +2669,26 @@ window.MOVIES_SEED = [
   ],
   "location": "Eastville Cineplex",
   "poster": "movie_poster/Digger.jpg"
+ },
+ {
+  "title": "Runner",
+  "year": 2026,
+  "watched": "2026-10-17",
+  "language": "English",
+  "genres": [
+   "Action",
+   "Comedy",
+   "Thriller"
+  ],
+  "runtime": 98,
+  "studios": "Angel Studios",
+  "director": "Scott Wagh",
+  "cast": [
+   "Alan Ritchson",
+   "Owen Wilson",
+   "Rodrigo Santoro"
+  ],
+  "location": "Promenade Cineplex",
+  "poster": "movie_poster/runner.jpg"
  }
 ];

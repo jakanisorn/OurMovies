@@ -51,7 +51,10 @@
     state.deleted = saved.deleted || [];
     const have = new Set(saved.movies.map((m) => m.id));
     // movies added to movies-data.js later show up here too
-    const fresh = seed.filter((m) => !have.has(m.id) && !state.deleted.includes(m.id));
+    // The data file is rewritten on every add, edit and delete, so anything in it belongs on the page.
+    // Forget old "deleted" marks for movies that are in the file again.
+    const fresh = seed.filter((m) => !have.has(m.id));
+    state.deleted = state.deleted.filter((id) => !seed.some((m) => m.id === id));
     state.movies = [...saved.movies, ...fresh];
   }
   function save() {
