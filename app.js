@@ -3,6 +3,15 @@
 
   const STORE_KEY = 'ourmovies.v1';
   const $ = (id) => document.getElementById(id);
+
+  // Adding, editing and deleting only work when the site is opened from your own computer
+  // (a file or localhost). The published GitHub Pages site is view-only.
+  const CAN_EDIT = location.protocol === 'file:' || ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+  if (!CAN_EDIT) {
+    document.documentElement.classList.add('readonly');
+    const f = document.querySelector('.foot p');
+    if (f) f.textContent = 'Made for two.';
+  }
   const MONTHS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const NOW = new Date();
@@ -320,7 +329,7 @@
   const currentDetail = () => state.movies.find((x) => x.id === state.detailId);
   $('dClose').addEventListener('click', () => $('detailDlg').close());
   $('detailDlg').addEventListener('click', (ev) => { if (ev.target === ev.currentTarget) ev.currentTarget.close(); });
-  $('dEdit').addEventListener('click', () => { const m = currentDetail(); $('detailDlg').close(); if (m) openForm(m); });
+  $('dEdit').addEventListener('click', () => { if (!CAN_EDIT) return; const m = currentDetail(); $('detailDlg').close(); if (m) openForm(m); });
   $('dDelete').addEventListener('click', () => {
     const m = currentDetail();
     $('detailDlg').close();
@@ -490,7 +499,7 @@
   });
 
   $('cancelBtn').addEventListener('click', () => $('movieDlg').close());
-  $('addBtn').addEventListener('click', () => openForm(null));
+  $('addBtn').addEventListener('click', () => { if (CAN_EDIT) openForm(null); });
 
   /* ---------- open a card ---------- */
   $('grid').addEventListener('click', (ev) => {

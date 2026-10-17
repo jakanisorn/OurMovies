@@ -289,3 +289,6 @@ dialog.detail { --stub: #3d2a96; width: min(820px, calc(100vw - 24px)); overflow
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Published site is view-only */
+.readonly #addBtn, .readonly #dEdit, .readonly #dDelete { display: none !important; }
