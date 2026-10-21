@@ -2690,5 +2690,28 @@ window.MOVIES_SEED = [
   ],
   "location": "Promenade Cineplex",
   "poster": "movie_poster/runner.jpg"
+ },
+ {
+  "title": "Street Fighter",
+  "year": 2026,
+  "watched": "2026-10-21",
+  "language": "English",
+  "genres": [
+   "Action",
+   "Martial Arts",
+   "Video Game Adaptation"
+  ],
+  "runtime": 120,
+  "studios": "Legendary Pictures, Capcom Entertainment",
+  "director": "Kitao Sakurai",
+  "cast": [
+   "Noah Centineo",
+   "Andrew Koji",
+   "Callina Liang",
+   "David Dastmalchian",
+   "Jason Momoa"
+  ],
+  "location": "Eastville Cineplex",
+  "poster": "movie_poster/street-fighter.jpg"
  }
 ];
