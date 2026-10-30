@@ -2713,5 +2713,27 @@ window.MOVIES_SEED = [
   ],
   "location": "Eastville Cineplex",
   "poster": "movie_poster/street-fighter.jpg"
+ },
+ {
+  "title": "Chiikawa the Movie: The Secret of the Mermaid Island",
+  "year": 2026,
+  "watched": "2026-10-30",
+  "language": "Japanese",
+  "genres": [
+   "Animation",
+   "Adventure",
+   "Fantasy"
+  ],
+  "runtime": 99,
+  "studios": "Cypic (CyPic), CygamesPictures",
+  "director": "Kei Oikawa",
+  "cast": [
+   "Haruka Aoki",
+   "Makoto Tanaka",
+   "Ari Ozawa",
+   "Minori Suzuki"
+  ],
+  "location": "Seacon Cineplex Srinakarin",
+  "poster": "movie_poster/chiikawa-the-movie-the-secret-of-the-mermaid-island.jpg"
  }
 ];
