@@ -2735,5 +2735,26 @@ window.MOVIES_SEED = [
   ],
   "location": "Seacon Cineplex Srinakarin",
   "poster": "movie_poster/chiikawa-the-movie-the-secret-of-the-mermaid-island.jpg"
+ },
+ {
+  "title": "The Intern",
+  "year": 2026,
+  "watched": "2026-10-31",
+  "language": "Korean",
+  "genres": [
+   "Comedy",
+   "Drama"
+  ],
+  "runtime": 132,
+  "studios": "Anthology Studios, Warner Bros. Korea",
+  "director": "Kim Do-young",
+  "cast": [
+   "Choi Min-sik",
+   "Han So-hee",
+   "Kim Jun-han",
+   "Ryu Hye-young"
+  ],
+  "location": "Bangkapi Cineplex",
+  "poster": "movie_poster/the-intern.jpg"
  }
 ];
