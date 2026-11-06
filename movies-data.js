@@ -2756,5 +2756,28 @@ window.MOVIES_SEED = [
   ],
   "location": "Bangkapi Cineplex",
   "poster": "movie_poster/the-intern.jpg"
+ },
+ {
+  "title": "Godzilla Minus Zero",
+  "year": 2026,
+  "watched": "2026-11-05",
+  "language": "Japanese",
+  "genres": [
+   "Science Fiction",
+   "Action",
+   "Drama"
+  ],
+  "runtime": 135,
+  "studios": "Toho Studios, Robot Communications",
+  "director": "Takashi Yamazaki",
+  "cast": [
+   "Ryunosuke Kamiki",
+   "Minami Hamabe",
+   "Min Tanaka",
+   "Hidetaka Yoshioka",
+   "Masami Nagasawa"
+  ],
+  "location": "Eastville Cineplex",
+  "poster": "movie_poster/godzilla-minus-zero.jpg"
  }
 ];
