@@ -2778,6 +2778,29 @@ window.MOVIES_SEED = [
    "Masami Nagasawa"
   ],
   "location": "Eastville Cineplex",
-  "poster": "movie_poster/godzilla-minus-zero.jpg"
+  "poster": "movie_poster/godzilla-minus-zero-2.jpg"
+ },
+ {
+  "title": "Ramayana: Part 1",
+  "year": 2026,
+  "watched": "2026-11-06",
+  "language": "Hindi",
+  "genres": [
+   "Action",
+   "Mythological",
+   "Adventure"
+  ],
+  "runtime": 208,
+  "studios": "Prime Focus Studios, Monster Mind Creations, DNEG",
+  "director": "Nitesh Tiwari",
+  "cast": [
+   "Ranbir Kapoor",
+   "Sai Pallavi",
+   "Yash",
+   "Ravie Dubey",
+   "Arun Govil"
+  ],
+  "location": "Eastville Cineplex",
+  "poster": "movie_poster/ramayana-part-1.jpg"
  }
 ];
