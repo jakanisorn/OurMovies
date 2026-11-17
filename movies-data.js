@@ -2802,5 +2802,28 @@ window.MOVIES_SEED = [
   ],
   "location": "Eastville Cineplex",
   "poster": "movie_poster/ramayana-part-1.jpg"
+ },
+ {
+  "title": "How to rob a bank",
+  "year": 2026,
+  "watched": "2026-11-16",
+  "language": "English",
+  "genres": [
+   "Action",
+   "Comedy",
+   "Crime"
+  ],
+  "runtime": 122,
+  "studios": "Metro-Goldwyn-Mayer, Imagine Entertainment, 87North Productions",
+  "director": "David Leitch",
+  "cast": [
+   "Nicholas Hoult",
+   "Zoë Kravitz",
+   "Anna Sawai",
+   "Pete Davidson",
+   "John C. Reilly"
+  ],
+  "location": "Seacon Cineplex Srinakarin",
+  "poster": "movie_poster/how-to-rob-a-bank.jpg"
  }
 ];
