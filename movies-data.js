@@ -2778,7 +2778,7 @@ window.MOVIES_SEED = [
    "Masami Nagasawa"
   ],
   "location": "Eastville Cineplex",
-  "poster": "movie_poster/godzilla-minus-zero-2.jpg"
+  "poster": "movie_poster/godzilla-minus-zero-3.jpg"
  },
  {
   "title": "Ramayana: Part 1",
@@ -2825,5 +2825,34 @@ window.MOVIES_SEED = [
   ],
   "location": "Seacon Cineplex Srinakarin",
   "poster": "movie_poster/how-to-rob-a-bank.jpg"
+ },
+ {
+  "title": "The Hunger Games: Sunrise on the Reaping",
+  "year": 2026,
+  "watched": "2026-11-20",
+  "language": "English",
+  "genres": [
+   "Action",
+   "Adventure",
+   "Fantasy"
+  ],
+  "runtime": 158,
+  "studios": "Color Force",
+  "director": "Francis Lawrence",
+  "cast": [
+   "Joseph Zada",
+   "Jesse Plemons",
+   "Ralph Fiennes",
+   "Glenn Close",
+   "Kieran Culkin",
+   "Elle Fanning",
+   "Mckenna Grace",
+   "Maya Hawke",
+   "Whitney Peak",
+   "Kelvin Harrison Jr.",
+   "Ben Wang"
+  ],
+  "location": "Eastville Cineplex",
+  "poster": "movie_poster/the-hunger-games-sunrise-on-the-reaping.jpg"
  }
 ];
